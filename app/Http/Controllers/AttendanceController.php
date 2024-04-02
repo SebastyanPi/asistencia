@@ -91,7 +91,7 @@ class AttendanceController extends Controller
         ];
 
         //envia el correo
-        Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($message));
+        //Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($message));
 
         return redirect()->route('complete.attendance.details', $request->id_assist);
 
