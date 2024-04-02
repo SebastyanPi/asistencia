@@ -83,7 +83,7 @@ class AttendanceController extends Controller
             ]);
         }
 
-        $all = studentAttendance::where('attendance_id', $id_assist)->get();
+        $all = studentAttendance::where('attendance_id', $request->id_assist)->get();
 
         $message = [
             "attendance" => $item,
