@@ -8,6 +8,7 @@
 </head>
 <body>
      <h1>👋 Asistencia {{ $attendance->date }} - {{ $group["name"] }}</h1>
+     <h3>💚 Docente : {{ $attendance->teacher }} </h3>
      <ol>
         @foreach ($studentAttendance as $key => $value)
             <li>⭐ {{ $value["student"] }} - @if ($value["attendance"] == 1) <b>SI</b> @else NO @endif </li>
