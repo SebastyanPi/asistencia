@@ -22,6 +22,10 @@ class AttendanceController extends Controller
             if(isset($item)){
                 return redirect()->route('view.attendance', $item->id);
             }
+            $item2 = attendance::where('codeNullable',$code)->first();
+            if(isset($item2)){
+                return redirect()->route('view.attendance', $item->id);
+            }
 
         }else if($pos1 !== false ){
             $code = substr($request->code, 1);

@@ -10,15 +10,14 @@
     <title>INTESA - Asistencia</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://db.onlinewebfonts.com/c/14936bb7a4b6575fd2eee80a3ab52cc2?family=Feather+Bold" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ env('APP_URL') }}css/app.css">
      <!-- Font Awesome Icons -->
      <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
      <meta property="og:image" content="https://campus.institutointesa.edu.co/img/intesa.png">
+
+     <link rel="icon" type="image/x-icon" href="https://campus.institutointesa.edu.co/img/intesa.png">
 </head>
 <body>
     <div class="show_loader " id="show_loader">
