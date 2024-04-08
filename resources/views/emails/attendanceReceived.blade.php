@@ -7,10 +7,10 @@
     <title>Asistencia INTESA</title>
 </head>
 <body>
-     <h1>Asistencia {{ $attendance->date }}} - {{ $group["name"] }}</h1>
+     <h1>👋 Asistencia {{ $attendance->date }} - {{ $group["name"] }}</h1>
      <ol>
         @foreach ($studentAttendance as $key => $value)
-            <li>{{ $value["student"] }} - @if ($value["attendance"] == 0) SI @else NO @endif </li>
+            <li>⭐ {{ $value["student"] }} - @if ($value["attendance"] == 0) <b>SI</b> @else NO @endif </li>
         @endforeach
      </ol>
 </body>
