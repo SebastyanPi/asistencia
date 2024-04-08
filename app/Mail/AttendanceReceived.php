@@ -40,7 +40,7 @@ class AttendanceReceived extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: '💎Asistencia INTESA - '.$this->attendance->date. " - " .$group["name"],
+            subject: '💎Asistencia INTESA - '.$this->attendance->date. " - " .$this->group["name"],
         );
     }
 
