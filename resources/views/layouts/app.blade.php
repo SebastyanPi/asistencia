@@ -50,7 +50,7 @@
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item ">
+                                <li class="nav-item d-none">
                                     <a class="nav-link text-n-dark" href="{{ route('register') }}"><i class="fas fa-user"></i> {{ __('Register') }}</a>
                                 </li>
                             @endif

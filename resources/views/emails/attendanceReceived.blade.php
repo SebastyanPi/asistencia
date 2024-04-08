@@ -7,7 +7,11 @@
     <title>Asistencia INTESA</title>
 </head>
 <body>
-
-
+     <h1>Asistencia {{ $attendance->date }}} - {{ $group->name }}</h1>
+     <ol>
+        @foreach ($studentAttendance as $item)
+            <li>{{ $item->student }} - @if ($attendance == 0) SI @else NO @endif </li>
+        @endforeach
+     </ol>
 </body>
 </html>

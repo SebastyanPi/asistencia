@@ -87,15 +87,23 @@ class AttendanceController extends Controller
             ]);
         }
 
-        $all = studentAttendance::where('attendance_id', $request->id_assist)->get();
+        $group = $this->getGroups($item->group);
 
-        $message = [
-            "attendance" => $item,
-            "studentAttendance" => $all,
-        ];
+        $listItem = studentAttendance::where('attendance_id', $id_assist)->get();
+        foreach ($listItem as $list) {
+            $alumn = DB::connection('notas')->table('users')->where('id', $list->student)->first();
+            array_push($listAttendece,[
+                "student_id" => $list->student,
+                "student" => $alumn->firstname." ".$alumn->lastname,
+                "attendance" => $list->attendance
+            ]);
+        }
+
+        $attendance = $item;
+        $studentAttendance = $listItem;
 
         //envia el correo
-        //Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($message));
+        Mail::to('sebastyampi@gmail.com')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
 
         return redirect()->route('complete.attendance.details', $request->id_assist);
 

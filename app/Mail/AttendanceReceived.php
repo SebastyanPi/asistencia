@@ -15,17 +15,21 @@ class AttendanceReceived extends Mailable
 
     public $subject = "ASISTENCIA - INTESA";
 
-    public $message;
+    public $attendance;
+    public $studentAttendance;
+    public $group;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($attendance, $studentAttendance, $group)
     {
         //
-        $this->message = $message;
+        $this->attendance = $attendance;
+        $this->studentAttendance = $studentAttendance;
+        $this->group = $group;
     }
 
     /**
