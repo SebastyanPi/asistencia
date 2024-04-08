@@ -50,7 +50,7 @@
                     </table>
     
                     <div class="my-1">
-                        <input type="email" class="form-control" placeholder="Escribe el Email donde se enviará la asistencia." name="email" >
+                        <input type="email" class="form-control d-none" placeholder="Escribe el Email donde se enviará la asistencia." name="email" >
                         <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-n-primary  mt-3">
                             <i class="fas fa-save"></i> Guardar
                         </button>
