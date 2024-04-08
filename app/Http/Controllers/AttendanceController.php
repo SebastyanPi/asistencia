@@ -89,7 +89,7 @@ class AttendanceController extends Controller
 
         $group = $this->getGroups($item->group);
 
-        $listItem = studentAttendance::where('attendance_id', $id_assist)->get();
+        $listItem = studentAttendance::where('attendance_id', $request->id_assist)->get();
         foreach ($listItem as $list) {
             $alumn = DB::connection('notas')->table('users')->where('id', $list->student)->first();
             array_push($listAttendece,[
