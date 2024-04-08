@@ -88,6 +88,7 @@ class AttendanceController extends Controller
         }
 
         $group = $this->getGroups($item->group);
+        $listAttendece = [];
 
         $listItem = studentAttendance::where('attendance_id', $request->id_assist)->get();
         foreach ($listItem as $list) {
@@ -100,7 +101,7 @@ class AttendanceController extends Controller
         }
 
         $attendance = $item;
-        $studentAttendance = $listItem;
+        $studentAttendance = $listAttendece;
 
         //envia el correo
         Mail::to('sebastyampi@gmail.com')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
