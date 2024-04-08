@@ -104,7 +104,7 @@ class AttendanceController extends Controller
         $studentAttendance = $listAttendece;
 
         //envia el correo
-        Mail::to('sebastyampi@gmail.com')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
+        Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
 
         return redirect()->route('complete.attendance.details', $request->id_assist);
 
@@ -155,7 +155,7 @@ class AttendanceController extends Controller
         $studentAttendance = $listAttendece;
         $group = $this->getGroups($item->group);
         //envia el correo
-        Mail::to('sebastyampi@gmail.com')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
+        Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
 
         return redirect()->route('complete.attendance.details', $request->id_assist);
     }
