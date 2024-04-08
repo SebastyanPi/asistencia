@@ -139,6 +139,24 @@ class AttendanceController extends Controller
             $item->attendance =  $state;
             $item->save();
         }
+
+        $item = attendance::where('id',$request->id_assist)->first();
+        $attendance = $item;
+
+        $listAttendece = [];
+        foreach ($listItem as $list) {
+            $alumn = DB::connection('notas')->table('users')->where('id', $list->student)->first();
+            array_push($listAttendece,[
+                "student_id" => $list->student,
+                "student" => $alumn->firstname." ".$alumn->lastname,
+                "attendance" => $list->attendance
+            ]);
+        }
+        $studentAttendance = $listAttendece;
+        $group = $this->getGroups($item->group);
+        //envia el correo
+        Mail::to('sebastyampi@gmail.com')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
+
         return redirect()->route('complete.attendance.details', $request->id_assist);
     }
 
