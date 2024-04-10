@@ -19,7 +19,7 @@
      <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
      <meta property="og:image" content="https://campus.institutointesa.edu.co/img/intesa.png">
 
-     <link rel="icon" type="image/x-icon" href="https://campus.institutointesa.edu.co/img/intesa.png">
+     <link rel="icon" type="image/x-icon" href="{{ env('APP_URL') }}img/asistencia.png">
 </head>
 <body>
     <div class="show_loader " id="show_loader">
