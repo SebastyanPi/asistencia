@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <h1 style="font-size: 80px">{{ $item->code }}</h1>
+                            <h1 class="codeAsistencia" style="font-size: 80px">{{ $item->code }}</h1>
                             <p> <span class="parch-text p-2"> <i class="fas fa-users"></i></span> {{ $typeGroup['name'] }} </p>
                             <p> <span class="parch-text p-2"> <i class="fas fa-chalkboard-teacher"></i></span> {{ $item->teacher }} </p>
                             <p> <span class="parch-text p-2"> <i class="fas fa-clock"></i></span> {{ $item->date }} </p>

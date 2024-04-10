@@ -11,7 +11,7 @@
 
                 <div class="card-body text-center">
                     <h4>El codigo para registrar asistencia es : </h4>
-                    <h1 style="font-size: 100px">{{ $requestItem["code"] }}</h1>
+                    <h1 class="codeAsistencia" style="font-size: 100px">{{ $requestItem["code"] }}</h1>
                     <div>
                         <p> <span class="parch-text p-2"> Grupo:</span>  {{ $requestItem["group"] }}</p>
                         <p> <span class="parch-text p-2"> Docente:</span>  {{ $requestItem["teacher"] }}</p>
