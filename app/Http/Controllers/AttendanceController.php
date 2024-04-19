@@ -8,6 +8,8 @@ use App\Models\studentAttendance;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AttendanceReceived;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -104,7 +106,8 @@ class AttendanceController extends Controller
         $studentAttendance = $listAttendece;
 
         //envia el correo
-        Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
+        //Mail::to('academia@institutointesa.edu.co')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
+        Mail::to('sebastyampi@gmail.com')->send(new AttendanceReceived($attendance, $studentAttendance, $group));
 
         return redirect()->route('complete.attendance.details', $request->id_assist);
 
@@ -161,6 +164,7 @@ class AttendanceController extends Controller
     }
 
     public function attendance_complete_details($id_assist){
+        date_default_timezone_set('America/Bogota');
         $listStudent = [];
         $item = attendance::where('id',$id_assist)->first();
         $id = $item->group;
@@ -175,8 +179,34 @@ class AttendanceController extends Controller
             ]);
         }
         $qrCode = $this->qr_code(route('complete.attendance.details', $id_assist),$id_assist);
+        $date = Carbon::now();
+        $fechaHoy = $date->toDateTimeString();
+        $pdf = Pdf::loadView('pdf.attendance', compact('listStudent','item','typeGroup','qrCode','fechaHoy'));
 
         return view('details', compact('item', 'listStudent','typeGroup', 'qrCode'));
+    }
+
+    public function generatePDF($id_assist){
+        date_default_timezone_set('America/Bogota');
+        $listStudent = [];
+        $item = attendance::where('id',$id_assist)->first();
+        $id = $item->group;
+        $typeGroup = $this->getGroups($id);
+        $list = studentAttendance::where('attendance_id', $id_assist)->get();
+        foreach ($list as $show) {
+            $alumn = DB::connection('notas')->table('users')->where('id', $show->student)->first();
+            array_push($listStudent, [
+                "id" => $alumn->id,
+                "student" => $alumn->firstname." ".$alumn->lastname,
+                "attendance" => $show->attendance
+            ]);
+        }
+        $qrCode = $this->qr_code(route('complete.attendance.details', $id_assist),$id_assist);
+        $date = Carbon::now();
+        $fechaHoy = $date->toDateTimeString();
+        $pdf = Pdf::loadView('pdf.attendance', compact('listStudent','item','typeGroup','qrCode','fechaHoy'));
+
+        return $pdf->stream();
     }
 
     public function attendance_list(){

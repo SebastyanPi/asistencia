@@ -21,6 +21,7 @@
                             <div class="w-100 h-100 text-center" style="width: 100%">
                                 <img src="{{ env('APP_URL') }}qrcodes/{{ $item->id }}.svg" width="70%" height="70%" alt=""> <br>
                                 <small> Guarda este codigo para que puedas revisar la asistencia cuando quieras.</small>
+                                <a target="__blank" href="{{ route('pdf.generate', $item->id) }}" class="btn btn-outline-success"><i class="fas fa-download"></i> Descargar PDF</a>
                             </div>
                         </div>
                     </div>

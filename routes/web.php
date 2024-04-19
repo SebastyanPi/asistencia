@@ -39,3 +39,5 @@ Route::post('/asistencia/complete/save', [App\Http\Controllers\AttendanceControl
 Route::post('/crear-asistencia/post', [App\Http\Controllers\AttendanceController::class, 'registerAttendance'] )->name('register.post');
 
 Route::get('/generateCode', [App\Http\Controllers\AttendanceController::class, 'qr_code'] )->name('qr.generate');
+
+Route::get('/generate/attendance/{id}', [App\Http\Controllers\AttendanceController::class, 'generatePDF'] )->name('pdf.generate');
